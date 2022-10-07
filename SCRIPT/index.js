@@ -38,4 +38,41 @@ function toBase64(text) {
       alert('selecione codificar ou decodificar')
     }
   }
+
+  function toCaesar(text) {
+    let steps = parseInt(document.getElementById('passos').value)
+    const code = document.querySelector('input[name="code"]:checked').value
+    if (code === 'decodificar') {
+      steps = steps * -1
+    }
+    const alfabeto = 'abcdefghijklmnopqrstuwxyz'.split('')
+  
+    const textoOriginal = text.split('')
+    let textoCriptografado = ''
+    for (let i = 0; i < textoOriginal.length; i++) {
+      let posicaoNoAlfabeto = alfabeto.indexOf(textoOriginal[i])
+      if (posicaoNoAlfabeto + steps > alfabeto.length) {
+        const somaSteps = posicaoNoAlfabeto + steps
+        const diferenca = somaSteps - alfabeto.length
+        posicaoNoAlfabeto = diferenca
+      } else if (posicaoNoAlfabeto + steps < 0) {
+        const somaSteps = posicaoNoAlfabeto + steps
+        const diferenca = alfabeto.length - somaSteps
+        posicaoNoAlfabeto = alfabeto.length + diferenca - 1
+        console.log({ posicaoNoAlfabeto, diferenca, somaSteps })
+      } else {
+        posicaoNoAlfabeto += steps
+      }
+      console.log(alfabeto[posicaoNoAlfabeto])
+      if (textoOriginal[i] === ' ') {
+        textoCriptografado += ' '
+      } else {
+        textoCriptografado += alfabeto[posicaoNoAlfabeto]
+      }
+  
+    }
+    document.getElementById('decodedText').value = textoCriptografado
+  }
+  
+  
   
