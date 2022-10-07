@@ -14,6 +14,41 @@
   <header>
     <h1> Decodificando</h1>
     <main> 
+      <div class="container">
+        <textarea name=""  id="textToDecode" class="caixa" cols="20" rows="5" placeholder="Digite sua mensagem aqui..."></textarea>
+     </div>
+        <div class="selecione">
+            <select name="" id="selection">
+              <option id="cesarCifra" value="cesar"> Cifra de César</option>
+              <option id="64base" value="b64"> Base 64</option>
+            </select>
+        </div>
+          <div id="selecao">
+            <label class="textopassos"> Selecione o número de passos:</label> 
+              <div class="escolhapassos">
+                <input type="range" id="passos" min="2" max="25" value="5" oninput="this.nextElementSibling.Value = this.value"/>
+                <output>5</output>
+              </div>
+         </div>
+        <div class="codedecode">
+          <input id="radiocodificar" type="radio" name="code" value="codificar" />
+           <label>Codificar</label>
+           <input id="radiodecodificar" type="radio" name="code" value="decodificar" />
+          <label>Decodificar</label>
+        </div>
+        <div class="criptografar">
+          <button id="criptografarbtn" onclick="criptografia()">
+              Codificar Mensagem
+          </button>
+        </div>
+        <div class="container">
+              <textarea name="" id="decodificatexto" class="caixa" cols="20" rows="5" readonly
+              placeholder="Confira aqui..."></textarea>
+          </div>
+        </div>
+      </div> 
+
+
 
 
     </main>
